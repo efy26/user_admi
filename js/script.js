@@ -45,6 +45,8 @@ const btn_submit = document.querySelector(".btn_submit input")
             }
         ]
         
+        // users[6].style = "display: none;"
+       
         
 
 
@@ -73,17 +75,22 @@ const btn_submit = document.querySelector(".btn_submit input")
 
             
     }
-    users.push(admis)
+    
+    
+    
+    
+    
+    
     // console.log(users);
 
     function afficherTableau() {
         
-
+       
         let tbody = document.querySelector("tbody")
         
         for (let i = 0; i <= users.length; i++) {
-        
-        let balise_tr = document.createElement("tr")
+            
+            let balise_tr = document.createElement("tr")
             tbody.appendChild(balise_tr)
             let balise_td1 = document.createElement("td")
             let balise_td2 = document.createElement("td")
@@ -93,10 +100,12 @@ const btn_submit = document.querySelector(".btn_submit input")
             let balise_td5 = document.createElement("td")
             balise_td5.className = "btn_icon"
             let balise_i_icon = document.createElement("i")
+            balise_i_icon.className = ""
             balise_i_icon.className = "bi-trash"
             balise_td5.appendChild(balise_i_icon)
         
             let balise_img_icon = document.createElement("img")
+            balise_img_icon.src = ""
             balise_img_icon.src = "img/edit-2.svg"
             balise_td5.appendChild(balise_img_icon)
         
@@ -108,6 +117,7 @@ const btn_submit = document.querySelector(".btn_submit input")
 
             let input_id_users1 = document.createElement("input")
             input_id_users1.className = "input_id_users"
+            input_id_users1.value = ""
             input_id_users1.value = users[i].nom
             input_id_users1.setAttribute("disabled", "")
 
@@ -115,6 +125,7 @@ const btn_submit = document.querySelector(".btn_submit input")
 
             let input_id_users2 = document.createElement("input")
             input_id_users2.className = "input_id_users"
+            input_id_users2.value = ""
             input_id_users2.value = users[i].post_nom
             input_id_users2.setAttribute("disabled", "")
 
@@ -123,6 +134,7 @@ const btn_submit = document.querySelector(".btn_submit input")
 
             let input_id_users3 = document.createElement("input")
             input_id_users3.className = "input_id_users"
+            input_id_users3.value = ""
             input_id_users3.value = users[i].username
             input_id_users3.setAttribute("disabled", "")
 
@@ -135,6 +147,8 @@ const btn_submit = document.querySelector(".btn_submit input")
             balise_tr.appendChild(balise_td3)
             balise_tr.appendChild(balise_td4)
             balise_tr.appendChild(balise_td5)
+
+            
 
             // -------------- Popup users --------------------
             balise_img1.addEventListener("click", popupUsers)
@@ -213,18 +227,31 @@ const btn_submit = document.querySelector(".btn_submit input")
                     
                 }
             // -------------- fin Edit users --------------------
-
+            
         
-    }
-
+        }
+        
     
 }
+
+
+
+
+
+
+
+function addAmis() {
+    document.querySelector(".btn_ajouter_admis input").addEventListener("click", () => {
+        
+        users.push(admis)
+afficherTableau()
+
+    })
+    
+}
+addAmis()
 afficherTableau()
 
 
 
-
-
-
-   
 

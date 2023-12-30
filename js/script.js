@@ -336,6 +336,7 @@ function afficherAdmis() {
             
             balise_trs.remove()
             incr= 0
+            document.querySelector(".btn_ajouter_admis input").style = "display: unset;"
         }
         // -------------- fin Delete users --------------------
 
@@ -401,6 +402,8 @@ function addAmis() {
         
         
     }else if (incr == 1) {
+        document.querySelector(".btn_ajouter_admis input").style = "display: none;"
+
         afficherAdmis()
     }
        

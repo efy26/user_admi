@@ -3,13 +3,15 @@ const password_input = document.querySelector(".password input")
 const btn_submit = document.querySelector(".btn_submit input")
 
     let admis = 
-        {
+        [
+            {
             nom: "Efy",
             post_nom: "Dezer",
             username: "efy@gmail.com",
             password: "efy26",
             profil: "img/admis.jpeg"
-        }
+            }
+        ]
         // document.querySelector(".containers img").src = admis.profil
         // document.querySelector(".containers span").innerHTML = admis.username+ " <strong>admis</strong>"
         let users = [
@@ -234,7 +236,158 @@ const btn_submit = document.querySelector(".btn_submit input")
     
 }
 
+let incr= 0;
+function afficherAdmis() {
+        
+       
+    let tbodys = document.querySelector("tbody")
+    
+    for (let i = 0; i <= admis.length; i++) {
+        
+        let balise_trs = document.createElement("tr")
+        tbodys.appendChild(balise_trs)
+        let balise_td1s = document.createElement("td")
+        let balise_td2s = document.createElement("td")
+        let balise_td3s = document.createElement("td")
+        let balise_td4s = document.createElement("td")
+        let balise_img1s = document.createElement("img")
+        let balise_td5s = document.createElement("td")
+        balise_td5s.className = "btn_icon"
+        let balise_i_icons = document.createElement("i")
+        balise_i_icons.className = ""
+        balise_i_icons.className = "bi-trash"
+        balise_td5s.appendChild(balise_i_icons)
+    
+        let balise_img_icons = document.createElement("img")
+        balise_img_icons.src = ""
+        balise_img_icons.src = "img/edit-2.svg"
+        balise_td5s.appendChild(balise_img_icons)
+    
+    
+        balise_img1s.src = admis[i].profil
+        balise_img1s.className = "balise_img1"
+        balise_img1s.style = "cursor: pointer;"
+        balise_td4s.appendChild(balise_img1s)
 
+        let input_id_users1s = document.createElement("input")
+        input_id_users1s.className = "input_id_users"
+        input_id_users1s.value = ""
+        input_id_users1s.value = admis[i].nom
+        input_id_users1s.setAttribute("disabled", "")
+
+        balise_td1s.appendChild(input_id_users1s)
+
+        let input_id_users2s = document.createElement("input")
+        input_id_users2s.className = "input_id_users"
+        input_id_users2s.value = ""
+        input_id_users2s.value = admis[i].post_nom
+        input_id_users2s.setAttribute("disabled", "")
+
+
+        balise_td2s.appendChild(input_id_users2s)
+
+        let input_id_users3s = document.createElement("input")
+        input_id_users3s.className = "input_id_users"
+        input_id_users3s.value = ""
+        input_id_users3s.value = admis[i].username
+        input_id_users3s.setAttribute("disabled", "")
+
+
+        balise_td3s.appendChild(input_id_users3s)
+
+
+        balise_trs.appendChild(balise_td1s)
+        balise_trs.appendChild(balise_td2s)
+        balise_trs.appendChild(balise_td3s)
+        balise_trs.appendChild(balise_td4s)
+        balise_trs.appendChild(balise_td5s)
+
+        
+
+        // -------------- Popup users --------------------
+        balise_img1s.addEventListener("click", popupUserss)
+
+        function popupUserss() {
+            document.querySelector(".popup_header").innerHTML = `<div class="pupop_container">
+                        <div class="popup_infos_users">
+                            <div class="block_infos">
+                                Nom : <span class="nom">${admis[i].nom} </span><br><br>
+                                Postnom : <span class="nom">${admis[i].post_nom} </span><br><br>
+                                Adresse mail : <span class="nom">${admis[i].username} </span>
+                            </div>
+                            <i class="bi bi-x"></i>
+                        </div>
+                        <div class="block_profil_users">
+                            <img src="${admis[i].profil}" alt="photo profil" srcset="">
+                        </div>
+                    </div>`
+
+                    document.querySelector(".bi-x").addEventListener("click", () => {
+                        document.querySelector(".pupop_container").style = "display: none;"
+                    })
+
+        }
+        // -------------- fin Popup users --------------------
+
+        // -------------- Delete users --------------------
+        balise_i_icons.addEventListener("click", deleteUserss)
+
+        function deleteUserss() {
+            
+            balise_trs.remove()
+            incr= 0
+        }
+        // -------------- fin Delete users --------------------
+
+        // -------------- Edit users --------------------
+            balise_img_icons.addEventListener("click", editUserss)
+
+            function editUserss() {
+                
+                input_id_users1s.removeAttribute("disabled")
+                input_id_users1s.style = "background-color: rgb(233, 233, 233);"
+
+                input_id_users2s.removeAttribute("disabled")
+                input_id_users2s.style = "background-color: rgb(233, 233, 233);"
+
+                input_id_users3s.removeAttribute("disabled")
+                input_id_users3s.style = "background-color: rgb(233, 233, 233);"
+
+                balise_img_icons.remove()
+                balise_i_icons.remove()
+
+                let balise_img_icon2s = document.createElement("img")
+                balise_img_icon2s.src = "img/edit.svg"
+                balise_img_icon2s.style = "margin-top: 0em;"
+                balise_td5s.appendChild(balise_img_icon2s)
+
+                balise_img_icon2s.addEventListener("click", () => {
+                    input_id_users1s.setAttribute("disabled", "")
+                    input_id_users1s.style = "background-color: rgb(225, 225, 225); color: black;"
+
+                    input_id_users2s.setAttribute("disabled", "")
+                    input_id_users2s.style = "background-color: rgb(225, 225, 225); color: black;"
+
+                    input_id_users3s.setAttribute("disabled", "")
+                    input_id_users3s.style = "background-color: rgb(225, 225, 225); color: black;"
+
+                    balise_img_icon2s.remove()
+
+                    balise_i_icons.className = "bi-trash"
+                    balise_td5s.appendChild(balise_i_icons)
+
+                    balise_img_icons.src = "img/edit-2.svg"
+                    balise_td5s.appendChild(balise_img_icons)
+                })
+                
+            }
+        // -------------- fin Edit users --------------------
+        
+    
+    }
+    
+
+}
 
 
 
@@ -242,9 +395,15 @@ const btn_submit = document.querySelector(".btn_submit input")
 
 function addAmis() {
     document.querySelector(".btn_ajouter_admis input").addEventListener("click", () => {
+        incr = incr+1
+
+    if (incr == 0) {
         
-        users.push(admis)
-afficherTableau()
+        
+    }else if (incr == 1) {
+        afficherAdmis()
+    }
+       
 
     })
     

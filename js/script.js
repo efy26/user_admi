@@ -12,7 +12,7 @@ const btn_submit = document.querySelector(".btn_submit input")
             profil: "img/admis.jpeg"
             }
         ]
-        
+
         let users = [
             {
                 nom: "Pierre",
@@ -66,11 +66,11 @@ const btn_submit = document.querySelector(".btn_submit input")
             document.querySelector("form").action = "admi.html"
             
         }else if (username_input.value === "" || password_input.value === "") {
-            window.location = "login.html"
+            window.location = "index.html"
             alert("Veillez remplir le champ username ou password")
-        }else if (username_input.value !== admis.username || password_input.value !== admis.password) {
+        }else if (username_input.value !== admis[0].username || password_input.value !== admis[0].password) {
             alert("username ou password incorrect")
-            window.location = "login.html"
+            window.location = "index.html"
 
         }
 

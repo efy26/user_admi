@@ -12,8 +12,7 @@ const btn_submit = document.querySelector(".btn_submit input")
             profil: "img/admis.jpeg"
             }
         ]
-        // document.querySelector(".containers img").src = admis.profil
-        // document.querySelector(".containers span").innerHTML = admis.username+ " <strong>admis</strong>"
+        
         let users = [
             {
                 nom: "Pierre",
@@ -63,7 +62,7 @@ const btn_submit = document.querySelector(".btn_submit input")
 
     const checkConnexion = () => {
 
-        if (username_input.value === admis.username && password_input.value === admis.password) {
+        if (username_input.value === admis[0].username && password_input.value === admis[0].password) {
             document.querySelector("form").action = "admi.html"
             
         }else if (username_input.value === "" || password_input.value === "") {
